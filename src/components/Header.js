@@ -46,6 +46,7 @@ align-items:center;
 padding:0 36px;
 height:70px;
 background:#090b13;
+overflow-x:hidden ;
 `
 const Logo = styled.img`
 width:80px;
@@ -80,6 +81,7 @@ left:0;
 height:2px;
 width:95%;
 transform:scaleX(0);
+transform-origin:left center;
 opacity:0;
 background: blue;
 transition:.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -91,7 +93,7 @@ a:hover::after{
 }
 `
 const UserImg = styled.img`
-height:48px;
-width:48px;
+height:38px;
+width:38px;
 cursor:pointer;
 `
