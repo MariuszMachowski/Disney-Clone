@@ -29,6 +29,7 @@ const Container = styled.div`
 display:flex;
 justify-content:space-around;
 margin-top:30px;
+padding: 20px 0 30px;
 `
 const Wrap = styled.div`
 flex-basis:16%;
@@ -44,8 +45,8 @@ img{
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    width: 80%;
-    height:80%;
+    width: 75%;
+    height:75%;
     object-fit:cover;
 }
 &:hover{
