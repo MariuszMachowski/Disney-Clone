@@ -16,10 +16,16 @@ const ImgSlider = () => {
     return (
         <Carousel {...settings}>
             <Wrap>
+                <img src="/images/slider-badag.jpg" alt="slider" />
+            </Wrap>
+            <Wrap>
                 <img src="/images/slider-badging.jpg" alt="slider" />
             </Wrap>
             <Wrap>
-                <img src="/images/slider-badag.jpg" alt="slider" />
+                <img src="/images/slider-scale.jpg" alt="slider" />
+            </Wrap>
+            <Wrap>
+                <img src="/images/slider-scales.jpg" alt="slider" />
             </Wrap>
         </Carousel>
     );
@@ -28,6 +34,14 @@ const ImgSlider = () => {
 export default ImgSlider;
 
 const Carousel = styled(Slider)`
+@media(max-width:600px){
+    &{
+        width:86vw;
+        margin-left:2vw;
+        margin-right:2vw;
+    }
+}
+
 padding-top:20px;
 ul li button{
     &:before{
@@ -47,9 +61,17 @@ button{
 `
 const Wrap = styled.div`
 cursor: pointer;
+height:40vh;
+@media(max-width:600px){
+    &{
+        height:30vh;
+    }
+}
 img{
     width: 100%;
     height:100%;
+    object-fit:cover;
+    object-position:center;
     border-radius:4px;
     box-shadow:rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0 16px 10px -10px;
     border: 4px solid transparent;

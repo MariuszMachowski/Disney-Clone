@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-const Detail = () => {
+import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
+const Detail = ({ movies }) => {
+    const { id } = useParams();
+    const [movie, setMovie] = useState({});
+
+    useEffect(() => {
+        setMovie(movies[id - 1]);
+    }, [])
+
+
     return (
         <Container>
             <Background>
-                <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/4F39B7E16726ECF419DD7C49E011DD95099AA20A962B0B10AA1881A70661CE45/scale?width=1440&aspectRatio=1.78&format=jpeg" alt="background" />
+                <img src={movie.backgroundImg} alt="background" />
             </Background>
             <ImageTitle>
-                <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/D7AEE1F05D10FC37C873176AAA26F777FC1B71E7A6563F36C6B1B497CAB1CEC2/scale?width=1440&aspectRatio=1.78" alt="title" />
+                <img src={movie.titleImg} alt="title" />
             </ImageTitle>
             <Controls>
                 <PlayButton>
@@ -26,16 +36,18 @@ const Detail = () => {
                 </GroupWatchButton>
             </Controls>
             <Subtitle>
-                2018 : 7m : Family, Fantasy, Kids, Animation
+                {movie.subTitle}
             </Subtitle>
             <Description>
-                A Chinese mom who's sad when her grown son leaves home gets another chance at motherhood when one of her dumplings springs to life. But she finds that nothing stays cute and small forever.
+                {movie.description}
             </Description>
         </Container>
     );
 }
-
-export default Detail;
+const mapStateToProps = (state) => ({
+    movies: state.movies
+})
+export default connect(mapStateToProps, null)(Detail);
 
 const Container = styled.div`
 min-height: calc(100vh - 70px -5vh);
@@ -55,6 +67,7 @@ img{
     width: 100%;
     height:100%;
     object-fit:cover;
+    object-position:top;
 }
 `
 const ImageTitle = styled.div`

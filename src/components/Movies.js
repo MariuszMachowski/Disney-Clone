@@ -1,40 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
-const Movies = () => {
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+const Movies = ({ movies }) => {
     return (
         <Container>
             <h4>Recommended for You</h4>
             <Content>
-                <Wrap>
-                    <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EA416AD3B15FCC1BADC817A932A57FFF707556DB2233FFCB4CFEB7C8EEDE23C/scale?width=400&aspectRatio=1.78&format=jpeg" alt="movie" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EA416AD3B15FCC1BADC817A932A57FFF707556DB2233FFCB4CFEB7C8EEDE23C/scale?width=400&aspectRatio=1.78&format=jpeg" alt="movie" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EA416AD3B15FCC1BADC817A932A57FFF707556DB2233FFCB4CFEB7C8EEDE23C/scale?width=400&aspectRatio=1.78&format=jpeg" alt="movie" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EA416AD3B15FCC1BADC817A932A57FFF707556DB2233FFCB4CFEB7C8EEDE23C/scale?width=400&aspectRatio=1.78&format=jpeg" alt="movie" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EA416AD3B15FCC1BADC817A932A57FFF707556DB2233FFCB4CFEB7C8EEDE23C/scale?width=400&aspectRatio=1.78&format=jpeg" alt="movie" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EA416AD3B15FCC1BADC817A932A57FFF707556DB2233FFCB4CFEB7C8EEDE23C/scale?width=400&aspectRatio=1.78&format=jpeg" alt="movie" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EA416AD3B15FCC1BADC817A932A57FFF707556DB2233FFCB4CFEB7C8EEDE23C/scale?width=400&aspectRatio=1.78&format=jpeg" alt="movie" />
-                </Wrap>
-                <Wrap>
-                    <img src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6EA416AD3B15FCC1BADC817A932A57FFF707556DB2233FFCB4CFEB7C8EEDE23C/scale?width=400&aspectRatio=1.78&format=jpeg" alt="movie" />
-                </Wrap>
+                {
+                    movies.map(movie => (
+                        <Wrap key={movie.id}>
+                            <Link to={`/detail/${movie.id}`}>
+                                <img src={movie.cardImg} alt="movie" />
+                            </Link>
+                        </Wrap>
+                    ))}
             </Content>
         </Container>
     );
 }
-
-export default Movies;
+const mapStateToProps = (state) => ({
+    movies: state.movies
+})
+export default connect(mapStateToProps, null)(Movies);
 
 const Container = styled.div`
 h4{
@@ -45,7 +33,12 @@ const Content = styled.div`
 display:grid;
 grid-gap:25px;
 grid-template-columns:repeat(4,minmax(0,1fr));
-
+@media(max-width:600px){
+    &{
+        grid-gap:25px;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
 `
 const Wrap = styled.div`
 border-radius:10px;
