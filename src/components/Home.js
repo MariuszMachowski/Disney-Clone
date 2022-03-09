@@ -5,7 +5,6 @@ import Viewers from './Viewers';
 import Movies from './Movies';
 import styled from 'styled-components';
 import actions from '../redux/actions';
-// import db from '../firebase';
 const Home = ({ add, movies }) => {
 
     useEffect(() => {

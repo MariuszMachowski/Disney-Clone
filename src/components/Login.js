@@ -52,7 +52,6 @@ margin-top:15vh;
 width:70%;
 max-width:700px;
 height:50vh;
-/* background: #777; */
 `
 const LogosOne = styled.div`
 height:150px;

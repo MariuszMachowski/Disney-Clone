@@ -14,7 +14,7 @@ import {
 const App = () => {
   return (
     <>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Header />
         <Switch>
           <Route path='/login'>

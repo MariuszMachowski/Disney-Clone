@@ -12,7 +12,6 @@ const Header = ({ userInfo, addName, addEmail, addPhoto, remove }) => {
     const signIn = () => {
         auth.signInWithPopup(provider)
             .then((result) => {
-                // console.log(result);
                 const userName = result.user.displayName;
                 const userEmail = result.user.email;
                 const userPhoto = result.user.photoURL;
@@ -149,10 +148,7 @@ margin-left:25px;
 align-items:center;
     }
 }
-/* display:flex;
-flex-grow:1;
-margin-left:25px;
-align-items:center; */
+
 a{
     position:relative;
     display:flex;
@@ -207,7 +203,6 @@ display:none;
       position:relative;
       width:25px;
       height:25px;
-      /* overflow: hidden; */
       p{
           position:absolute;
           top:0;
